@@ -1,0 +1,67 @@
+USE DATABASE DATABASE;
+
+CREATE or replace table AJ_SALES_DATA_FINALS 
+
+( order_id VARCHAR(20),
+  order_date DATE,	
+  ship_date DATE,	
+  ship_mode VARCHAR(20),	
+  customer_name VARCHAR(40),	
+  segment VARCHAR(40),	
+  state VARCHAR(40),	
+  country VARCHAR(40),	
+  market VARCHAR(40),
+  region VARCHAR(40),	
+  product_id VARCHAR(40),	
+  category VARCHAR(40),	
+  sub_category VARCHAR(40),	
+  product_name VARCHAR(200),	
+  sales VARCHAR(40),	
+  quantity VARCHAR(40),	
+  discount NUMBER(38,4),	
+  profit VARCHAR(40),	
+  shipping_cost VARCHAR(40),	
+  order_priority VARCHAR(40),	
+  year VARCHAR(10)
+);
+
+---1--load data
+
+SELECT * FROM AJ_SALES_DATA_FINALS;
+DESCRIBE TABLE AJ_SALES_DATA_FINALS ;
+
+---2---
+Alter table AJ_SALES_DATA_FINALS
+ADD PRIMARY KEY(order_id); 
+
+---4--
+SELECT *,
+        SPLIT_PART(ORDER_ID,'-',3) AS order_extract
+FROM AJ_SALES_DATA_FINALS;
+
+----5---
+SELECT * ,
+        CASE
+        WHEN DISCOUNT>0 THEN 'YES'
+        ELSE 'NO' 
+        END AS Discount_Flag
+FROM AJ_SALES_DATA_FINALS;
+
+
+---6---
+CREATE OR REPLACE VIEW AJ_Process_Days AS
+           SELECT *,
+             datediff('day',order_date,ship_date) AS Process_Days
+           FROM AJ_SALES_DATA_FINALS;          
+
+SELECT * FROM AJ_Process_Days;
+
+---7----
+SELECT Process_Days ,
+        CASE 
+        WHEN Process_Days<=3 THEN '5'
+        WHEN Process_Days<=6 THEN '4'
+        WHEN Process_Days<=10 THEN '3'
+        ELSE '2'
+        END AS Rating
+   FROM AJ_Process_Days ;
