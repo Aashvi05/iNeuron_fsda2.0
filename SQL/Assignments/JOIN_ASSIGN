@@ -1,0 +1,170 @@
+USE DATABASE DEMODATABASE;
+USE WAREHOUSE DEMO;
+
+CREATE OR REPLACE TABLE AJ_BROKERS 
+(
+  BrokerID int,
+  BrokerCode VARCHAR2(50),	
+  BrokerFullName VARCHAR2(50),	
+  DistributionNetwork VARCHAR2(50),	
+  DistributionChannel VARCHAR2(50),	
+  CommissionScheme VARCHAR2(50)
+);
+
+SELECT * FROM AJ_BROKERS;
+
+CREATE OR REPLACE TABLE AJ_PRODUCTS
+(
+ ProductID VARCHAR2(50),	
+ ProductCategory VARCHAR2(50),	
+ ProductSubCategory VARCHAR2(50),
+ Product VARCHAR2(50)
+);
+SELECT * FROM AJ_PRODUCTS;
+
+
+CREATE OR REPLACE TABLE AJ_REGIONS
+(
+  id VARCHAR2(50),	
+  name VARCHAR2(50),
+  county VARCHAR2(100),	
+  state_code VARCHAR2(50),	
+  state	VARCHAR2(50),
+  type VARCHAR2(50),
+  latitude VARCHAR2(50),	
+  longitude	VARCHAR2(50),
+  area_code	VARCHAR2(50),
+  population VARCHAR2(50),	
+  households VARCHAR2(50),	
+  median_income VARCHAR2(50),	
+  land_area	VARCHAR2(50),
+  water_area VARCHAR2(50),	
+  time_zone VARCHAR2(50)
+);
+
+SELECT * FROM AJ_REGIONS;
+
+
+CREATE OR REPLACE TABLE AJ_CUSTOMERS
+(
+ CustomerID VARCHAR2(50),	
+ LastName VARCHAR2(50),	
+ FirstName VARCHAR2(50),	
+ BirthDate VARCHAR2(50),	
+ Gender VARCHAR2(50),	
+ ParticipantType VARCHAR2(50),	
+ RegionID VARCHAR2(50),	
+ MaritalStatus VARCHAR2(50)
+);
+
+
+
+
+CREATE OR REPLACE TABLE AJ_STATES_REGION
+(
+  State_Code VARCHAR2(50),	
+  State	VARCHAR2(50),
+  Region VARCHAR2(50)
+);
+
+SELECT * FROM AJ_STATES_REGION;
+
+CREATE OR REPLACE TABLE AJ_PRIORITIES
+(
+ ID VARCHAR2(50),
+ Description VARCHAR2(50)
+);
+ SELECT * FROM AJ_PRIORITIES;
+ 
+ CREATE OR REPLACE TABLE AJ_STATUS 
+(
+ ID VARCHAR2(50),
+ Description VARCHAR2(50)
+);
+ SELECT * FROM AJ_STATUS;
+ 
+ 
+ CREATE OR REPLACE TABLE AJ_CATEGORIES 
+(
+ ID VARCHAR2(50),
+ Description VARCHAR2(100),
+ Active  VARCHAR2(50)
+);
+ SELECT * FROM AJ_CATEGORIES;
+  
+ CREATE OR REPLACE TABLE AJ_SOURCE
+(
+ ID VARCHAR2(50),
+ Description VARCHAR2(50)
+);
+ SELECT * FROM AJ_SOURCE;
+ 
+CREATE OR REPLACE TABLE AJ_TYPES
+(
+ ID VARCHAR2(50),
+ Description VARCHAR2(50)
+);
+ SELECT * FROM AJ_TYPES;
+ 
+CREATE OR REPLACE TABLE AJ_COMPLAINS_DATA
+(
+  ID VARCHAR2(100),	
+  ComplainDate VARCHAR2(100),	
+  CompletionDate VARCHAR2(100),	
+  CustomerID VARCHAR2(100),	
+  BrokerID VARCHAR2(100),	
+  ProductID VARCHAR2(100), 	
+  ComplainPriorityID VARCHAR2(100),	
+  ComplainTypeID VARCHAR2(100),	
+  ComplainSourceID VARCHAR2(100),	
+  ComplainCategoryID VARCHAR2(100),	
+  ComplainStatusID VARCHAR2(100),	
+  AdministratorID VARCHAR2(100),	
+  ClientSatisfaction VARCHAR2(100),	
+  ExpectedReimbursement VARCHAR2(100)
+);
+
+ SELECT * FROM AJ_COMPLAINS_DATA;
+ 
+ CREATE OR REPLACE TABLE AJ_STATUS_HISTORY
+ (
+  ID VARCHAR2(50),	
+  ComplaintID VARCHAR2(50),	
+  ComplaintStatusID	VARCHAR2(50),
+  StatusDate VARCHAR2(50)
+ );
+ 
+ SELECT * FROM AJ_STATUS_HISTORY;
+ 
+ 
+ CREATE OR REPLACE TABLE AJ_MASTER_TABLE AS
+ SELECT COMP.* ,BrokerCode,BrokerFullName,DistributionNetwork,DistributionChannel,CommissionScheme,
+                ProductCategory,ProductSubCategory,Product,
+                name,county,REG.state_code,REG.state,type,latitude,longitude,area_code,population,households,median_income,land_area,water_area,time_zone,
+                LastName,FirstName,BirthDate,Gender,ParticipantType,RegionID,MaritalStatus,
+                Region,
+                PRIOR.Description AS PRIOR_Description,
+                STAT.Description AS STAT_Description,
+                CATE.Description AS CATE_Description,Active,
+                SOU.Description AS SOU_Description,
+                TYPE.Description AS TYPE_Description,
+                ComplaintID,StatusDate
+ FROM AJ_COMPLAINS_DATA AS COMP
+ LEFT OUTER JOIN AJ_BROKERS AS BRO ON COMP.BrokerID = BRO.BrokerID
+ LEFT OUTER JOIN AJ_PRODUCTS AS PROD ON COMP.ProductID = PROD.ProductID
+ LEFT OUTER JOIN AJ_CUSTOMERS AS CUST ON COMP.CustomerID = CUST.CustomerID
+ LEFT OUTER JOIN AJ_PRIORITIES as PRIOR ON COMP.ComplainPriorityID = PRIOR.ID
+ LEFT OUTER JOIN AJ_STATUS as STAT ON COMP.ComplainStatusID = STAT.ID
+ LEFT OUTER JOIN AJ_CATEGORIES as CATE ON COMP.ComplainCategoryID = CATE.ID
+ LEFT OUTER JOIN AJ_SOURCE as SOU ON COMP.ComplainSourceID = SOU.ID
+ LEFT OUTER JOIN AJ_TYPES as TYPE ON COMP.ComplainTypeID = TYPE.ID
+ LEFT OUTER JOIN AJ_STATUS_HISTORY as SH ON COMP.ComplainStatusID = SH.ComplaintStatusID
+ INNER JOIN AJ_REGIONS AS REG ON CUST.RegionID = REG.id
+ INNER JOIN AJ_STATES_REGION AS SR ON REG.state_code = SR.State_Code;
+ 
+ SELECT * FROM AJ_MASTER_TABLE;
+ 
+ 
+ SELECT DISTINCT * FROM AJ_MASTER_TABLE;
+ 
+ DESCRIBE TABLE AJ_MASTER_TABLE
