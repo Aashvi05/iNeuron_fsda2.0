@@ -1,1 +1,38 @@
+Q1
+*,-,/,+ are Expressions 
+'hello' ,-87.8,6 are values
 
+Q2
+A Variable is a store of information, 
+and a String is a type of information you would store in a Variable.
+
+Q3
+The 3 data types are: strings, integers and floats. 
+Strings- When using words (text) in Python, you're using strings.
+Integers- When using numbers in Python, you're using integers.
+Floats- Floats are real numbers used in python 
+
+Q4
+A combination of operands and operators is called an expression.
+The expression in Python produces some value or result after being interpreted by the Python
+
+Q5
+A statement in Python is used for creating variables or for displaying values. 
+The expression in Python produces some value or result after being interpreted by the Python
+
+Q6
+Bacon is 23
+
+Q7
+Both results are same i.e 'spamspamspam'
+
+Q8
+Because Variables can not start with number.
+
+Q9
+ int(), float(), and str()
+ 
+ Q10
+ The expression causes an error because 99 is an integer, 
+ and only strings can be concatenated to strings. 
+ The correct way is 'I have eaten ' + str(99) + ' burritos'.
