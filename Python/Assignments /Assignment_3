@@ -10,3 +10,41 @@ The def statement creates a function
 Q4
 A function consists of the def statement and the code in its def clause.
 A function call is what moves the program execution into the function, and the function call evaluates to the function's return value.
+
+Q5
+There's only one global Python scope per program execution. This scope remains in existence until the program terminates , 
+and a local scope is created whenever a function is called.
+
+Q6
+it gets deleted from the memory.
+
+Q7
+A return is a value that a function returns to the calling script or function when it completes its task
+Like any value, a return value can be used as part of an expression
+
+Q8
+ It will not return anything.
+ 
+Q9
+To create a global variable inside a function, you can use the global keyword.
+ 
+Q10
+What is the data type of None?
+
+Q11
+Imports a module named areallyourpetsnamederic.(It doesn't exist in python)
+
+Q12
+import spam
+spam.bacon()
+
+Q13
+Try-except
+
+Q14
+The try block lets you test a block of code for errors. 
+The except block lets you handle the error. The else block lets you execute code when there is no error. 
+The finally block lets you execute code, regardless of the result of the try- and except blocks.
+
+
+ 
