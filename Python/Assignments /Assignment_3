@@ -1,0 +1,12 @@
+Q1
+Functions makes programs shorter, easier to read, and easier to update.
+
+Q2
+Code in the function runs when the function is called
+
+Q3
+The def statement creates a function
+
+Q4
+A function consists of the def statement and the code in its def clause.
+A function call is what moves the program execution into the function, and the function call evaluates to the function's return value.
