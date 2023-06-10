@@ -1,1 +1,59 @@
+Q1
+[ ] is a empty list
 
+Q2
+spam = [2, 4, 6, 8, 10]
+spam[2] = 'hello'
+
+Q3
+'d'
+
+Q4
+'d'
+
+Q5
+['a', 'b']
+
+Q6
+1
+
+Q7
+[3.14, 'cat', 11, 'cat', True, 99]
+
+Q8
+[3.14, 11, 'cat', True]
+
+Q9
+The operator for list concatenation is +
+The operator for replication is *.
+
+Q10
+append() Adds object to the end of the list
+insert() Adds object before index
+
+Q11
+Remove and pop
+
+Q12
+Both lists and strings can be passed to len()
+Have indexes and slices
+Can be used in for loops
+Can be concatenated or replicated
+Can be used with the in and not in operators
+
+Q13
+Lists : are mutable - they can have values added, removed, or changed. lists useS []
+Tuples : are immutable; they cannot be changed at all. Tuple uses ()
+
+Q14
+tuple = (42,)
+
+Q15
+Using tuple() and list()
+
+Q16
+Variables will contain references to list values rather than list values themselves.
+
+Q17
+The copy.copy() function will do a shallow copy of a list,
+The copy.deepcopy() function will do a deep copy of a list.
