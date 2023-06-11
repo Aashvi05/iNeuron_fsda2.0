@@ -1,0 +1,40 @@
+Q1
+To insert characters that are illegal in a string, use an escape character. 
+An escape character is a backslash \ followed by the character you want to insert.
+
+Q2
+"\t" is a tab, "\n" is a newline
+
+Q3
+A='its a back slash \ in a line'
+print(A)
+
+Q4
+Because we used double quotes to mark the beginning and end of the string.
+
+Q5
+print("Hello there!")
+print("It is a great day.")
+
+Q6
+'e'
+'Hello'
+'Hello'
+'lo, world!'
+
+Q7
+'HELLO'
+True
+'hello'
+
+Q8
+['Remember,', 'remember,', 'the', 'fifth', 'of', 'July.']
+'There-can-only-one.'
+
+Q9
+Use the rjust() , center() , or ljust() methods to right-justify, center, or left-justify strings in Python. 
+
+
+Q10
+Use the .lstrip() method to remove whitespace and characters only from the beginning of a string.
+Use the .rstrip() method to remove whitespace and characters only from the end of a string
