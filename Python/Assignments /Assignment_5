@@ -1,0 +1,26 @@
+Q1
+dict = {}
+
+Q2
+{'foo': 42}
+
+Q3
+In List items are Ordered
+In Dictionary items are unordered
+
+Q4
+Error
+
+Q5
+There is no differnce
+
+Q6
+'cat' in spam -True
+'cat' in spam.values()- False
+
+Q7
+spam.setdefault ('color','black')
+
+Q8
+import pprint
+pprint.pprint()
