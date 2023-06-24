@@ -1,1 +1,28 @@
+Q1
+re.compile
+
+Q2
+Raw strings are used so that backslashes do not have to be escaped
+
+Q3
+The search() method searches a string for a specified value, and returns the position of the match.
+
+Q4
+.group() method will return the actual matched text from the searched string.
+
+Q5
+Group 0 is the entire match, 
+group 1 covers the first set 
+and group 2 covers the second set of parentheses
+
+Q6
+Periods and parentheses can be escaped with a backslash
+
+Q7
+If the regex has no groups, a list of strings is returned. If the regex has groups, a list of tuples of strings is returned.
+
+Q8
+The | character is called a pipe. You can use it anywhere you want to match one of many expressions.
+
+Q9
 
